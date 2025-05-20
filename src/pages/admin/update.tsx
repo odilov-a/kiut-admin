@@ -57,7 +57,7 @@ const User = ({ showEditModal, selectedCard }: any): JSX.Element => {
                 <Button
                   size="large"
                   htmlType="submit"
-                  title={t("Saqlash")}
+                  title={t("Save")}
                   className="w-full mt-[10px]"
                 />
               </div>

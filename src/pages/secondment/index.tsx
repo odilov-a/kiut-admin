@@ -6,7 +6,7 @@ import Container from "modules/container";
 import { CreateDoc } from "assets/images/icons";
 import More from "./more";
 
-const Information = () => {
+const Secondment = () => {
   const { mutate } = usePost();
   const { t, get, queryClient, navigate } = useHooks();
   const [moreModal, showMoreModal] = useState({ open: false, data: {} });
@@ -25,11 +25,11 @@ const Information = () => {
   const deleteAction = (id: any) => {
     if (id) {
       mutate(
-        { method: "delete", url: `/informations/${id}`, data: null },
+        { method: "delete", url: `/secondments/${id}`, data: null },
         {
           onSuccess: () => {
             queryClient.invalidateQueries({
-              queryKey: [`informations`],
+              queryKey: [`secondments`],
             });
             notification["success"]({
               message: t("Deleted successfully!"),
@@ -53,7 +53,7 @@ const Information = () => {
     <>
       <div className="content-panel">
         <div>
-          <Container.All url="/informations" name="informations">
+          <Container.All url="/secondments" name="secondments">
             {({ meta, items }) => {
               return (
                 <div>
@@ -61,8 +61,8 @@ const Information = () => {
                     <div className="page-heading__right">
                       <Button
                         icon={<CreateDoc />}
-                        title={t("Create new information")}
-                        onClick={() => navigate("/informations/create")}
+                        title={t("Create new secondment")}
+                        onClick={() => navigate("/secondments/create")}
                       />
                     </div>
                   </div>
@@ -121,7 +121,7 @@ const Information = () => {
                             <DotBtn
                               row={row}
                               editFunction={() =>
-                                navigate(`/informations/update/${get(row, "_id")}`)
+                                navigate(`/secondments/update/${get(row, "_id")}`)
                               }
                               deleteFunction={() => onDeleteHandler(row)}
                             />
@@ -140,4 +140,4 @@ const Information = () => {
   );
 };
 
-export default Information;
+export default Secondment;

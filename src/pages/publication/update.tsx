@@ -12,12 +12,12 @@ const Update = () => {
   const { get, t, navigate, location, params } = useHooks();
   const [selectedLang, setSelectedLang] = useState("O'z");
   const isUpdate =
-    utils.extractBaseUrl(location.pathname) === "/informations/update";
+    utils.extractBaseUrl(location.pathname) === "/publications/update";
   const informationId = params.id;
 
   const { data: informationData } = useGet({
-    name: `informations`,
-    url: `/informations/${informationId}`,
+    name: `publications`,
+    url: `/publications/${informationId}`,
     onSuccess: () => { },
     onError: () => { },
   });
@@ -27,8 +27,8 @@ const Update = () => {
   return (
     <div>
       <Container.Form
-        url={isUpdate ? `/informations/${get(data, "_id")}` : "/informations"}
-        name="informations"
+        url={isUpdate ? `/publications/${get(data, "_id")}` : "/publications"}
+        name="publications"
         method={isUpdate ? "put" : "post"}
         fields={[
           {
@@ -69,7 +69,7 @@ const Update = () => {
           }
         ]}
         onSuccess={() => {
-          navigate("/informations");
+          navigate("/publications");
         }}
         onError={(error) => {
           notification.error({
@@ -83,13 +83,13 @@ const Update = () => {
             <div>
               <div className="content-panel page-heading">
                 <p className="page-heading__title">
-                  {isUpdate ? t("Update information") : t("Create new information")}
+                  {isUpdate ? t("Update publication") : t("Create new publication")}
                 </p>
                 <div className="page-heading__right gap-2">
                   <Button
                     title={t("Cancel")}
                     className="mr-[20px]"
-                    onClick={() => navigate("/informations")}
+                    onClick={() => navigate("/publications")}
                   />
                   <Button
                     title={isUpdate ? t("Save") : t("Confirm")}

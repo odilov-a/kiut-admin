@@ -6,7 +6,7 @@ import Container from "modules/container";
 import { CreateDoc } from "assets/images/icons";
 import More from "./more";
 
-const Information = () => {
+const Participant = () => {
   const { mutate } = usePost();
   const { t, get, queryClient, navigate } = useHooks();
   const [moreModal, showMoreModal] = useState({ open: false, data: {} });
@@ -25,11 +25,11 @@ const Information = () => {
   const deleteAction = (id: any) => {
     if (id) {
       mutate(
-        { method: "delete", url: `/informations/${id}`, data: null },
+        { method: "delete", url: `/participants/${id}`, data: null },
         {
           onSuccess: () => {
             queryClient.invalidateQueries({
-              queryKey: [`informations`],
+              queryKey: [`participants`],
             });
             notification["success"]({
               message: t("Deleted successfully!"),
@@ -53,7 +53,7 @@ const Information = () => {
     <>
       <div className="content-panel">
         <div>
-          <Container.All url="/informations" name="informations">
+          <Container.All url="/participants" name="participants">
             {({ meta, items }) => {
               return (
                 <div>
@@ -61,8 +61,8 @@ const Information = () => {
                     <div className="page-heading__right">
                       <Button
                         icon={<CreateDoc />}
-                        title={t("Create new information")}
-                        onClick={() => navigate("/informations/create")}
+                        title={t("Create new participant")}
+                        onClick={() => navigate("/participants/create")}
                       />
                     </div>
                   </div>
@@ -88,9 +88,27 @@ const Information = () => {
                     })}
                     columns={[
                       {
-                        key: "title",
-                        title: t("Title"),
-                        dataIndex: "title",
+                        key: "fullName",
+                        title: t("Full name"),
+                        dataIndex: "fullName",
+                        className: "w-[80px]",
+                        render: (value) => (
+                          <div className="flex items-center">{value}</div>
+                        ),
+                      },
+                      {
+                        key: "position",
+                        title: t("Position"),
+                        dataIndex: "position",
+                        className: "w-[80px]",
+                        render: (value) => (
+                          <div className="flex items-center">{value}</div>
+                        ),
+                      },
+                      {
+                        key: "role",
+                        title: t("Role"),
+                        dataIndex: "role",
                         className: "w-[80px]",
                         render: (value) => (
                           <div className="flex items-center">{value}</div>
@@ -121,7 +139,7 @@ const Information = () => {
                             <DotBtn
                               row={row}
                               editFunction={() =>
-                                navigate(`/informations/update/${get(row, "_id")}`)
+                                navigate(`/participants/update/${get(row, "_id")}`)
                               }
                               deleteFunction={() => onDeleteHandler(row)}
                             />
@@ -140,4 +158,4 @@ const Information = () => {
   );
 };
 
-export default Information;
+export default Participant;

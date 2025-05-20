@@ -2,7 +2,7 @@ import { useState } from "react";
 import { notification, Tabs } from "antd";
 import { Button, Fields } from "components";
 import { Field } from "formik";
-import { useGet, useHooks  } from "hooks";
+import { useGet, useHooks } from "hooks";
 import Container from "modules/container";
 import { utils } from "services";
 
@@ -12,23 +12,23 @@ const Update = () => {
   const { get, t, navigate, location, params } = useHooks();
   const [selectedLang, setSelectedLang] = useState("O'z");
   const isUpdate =
-    utils.extractBaseUrl(location.pathname) === "/informations/update";
+    utils.extractBaseUrl(location.pathname) === "/secondments/update";
   const informationId = params.id;
 
   const { data: informationData } = useGet({
-    name: `informations`,
-    url: `/informations/${informationId}`,
+    name: `secondments`,
+    url: `/secondments/${informationId}`,
     onSuccess: () => { },
     onError: () => { },
   });
-  
+
   const data = get(informationData, "data");
 
   return (
     <div>
       <Container.Form
-        url={isUpdate ? `/informations/${get(data, "_id")}` : "/informations"}
-        name="informations"
+        url={isUpdate ? `/secondments/${get(data, "_id")}` : "/secondments"}
+        name="secondments"
         method={isUpdate ? "put" : "post"}
         fields={[
           {
@@ -66,10 +66,16 @@ const Update = () => {
             required: true,
             name: "descriptionEn",
             value: get(data, "descriptionEn"),
+          },
+          {
+            type: "array",
+            required: true,
+            name: "photoUrl",
+            value: get(data, "photoUrl", []),
           }
         ]}
         onSuccess={() => {
-          navigate("/informations");
+          navigate("/secondments");
         }}
         onError={(error) => {
           notification.error({
@@ -83,13 +89,13 @@ const Update = () => {
             <div>
               <div className="content-panel page-heading">
                 <p className="page-heading__title">
-                  {isUpdate ? t("Update information") : t("Create new information")}
+                  {isUpdate ? t("Update secondment") : t("Create new secondment")}
                 </p>
                 <div className="page-heading__right gap-2">
                   <Button
                     title={t("Cancel")}
                     className="mr-[20px]"
-                    onClick={() => navigate("/informations")}
+                    onClick={() => navigate("/secondments")}
                   />
                   <Button
                     title={isUpdate ? t("Save") : t("Confirm")}
@@ -160,6 +166,19 @@ const Update = () => {
                         className="h-[40vh]"
                         component={Fields.Ckeditor}
                         placeholder={t("Description (en)")}
+                      />
+                    </div>
+                  </TabPane>
+                  <TabPane tab={t("Photo")} key="photo">
+                    <div className="mb-[10px]">
+                      <p className="text-[#9EA3B5] px-[12px] py-[6px] bg-[#E6ECFE] rounded-[6px] inline-block mb-[12px] mr-[10px]">
+                        {t("Photo")}
+                      </p>
+                      <Field
+                        name="photoUrl"
+                        type="upload"
+                        multiple={true}
+                        component={Fields.ArrayUpload}
                       />
                     </div>
                   </TabPane>

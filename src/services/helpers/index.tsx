@@ -25,7 +25,7 @@ const menuItems: MenuItem[] = [
     key: "participants",
     label: "Participants",
     icon: <AppstoreOutlined />,
-    route: "/participant",
+    route: "/participants",
   },
   {
     key: "publications",
