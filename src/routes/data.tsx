@@ -1,10 +1,9 @@
 import { lazy } from "react";
-const Test = lazy(() => import("pages/test"));
 const User = lazy(() => import("pages/admin"));
-const Themes = lazy(() => import("pages/themes"));
 const Default = lazy(() => import("pages/default"));
 const NotFound = lazy(() => import("pages/notFound"));
-const TestUpdate = lazy(() => import("pages/test/update"));
+const Information = lazy(() => import("pages/information"));
+const InformationUpdate = lazy(() => import("pages/information/update"));
 
 export interface IRoute {
   path: string;
@@ -29,28 +28,22 @@ const privateRoutes: IRoute[] = [
     element: <User />,
   },
   {
-    path: "/test",
-    key: "test",
-    title: "Tests",
-    element: <Test />,
+    path: "/informations",
+    key: "informations",
+    title: "Informations",
+    element: <Information />,
   },
   {
-    path: "/test/create",
-    key: "test-create",
-    title: "Add test",
-    element: <TestUpdate />,
+    path: "/informations/create",
+    key: "informations-create",
+    title: "Informations",
+    element: <InformationUpdate />,
   },
   {
-    path: "/test/update/:id",
-    key: "test-update",
-    title: "Edit test",
-    element: <TestUpdate />,
-  },
-  {
-    path: "/themes",
-    key: "themes",
-    title: "Themes",
-    element: <Themes />,
+    path: "/informations/update/:id",
+    key: "informations-update",
+    title: "Informations",
+    element: <InformationUpdate />,
   },
   {
     path: "*",

@@ -18,8 +18,8 @@ i18next
       escapeValue: true,
     },
     backend: {
-      addPath: config.API_ROOT + "/translations/{{lng}}",
-      loadPath: config.API_ROOT + "/translations/{{lng}}",
+      // addPath: config.API_ROOT + "/translations/{{lng}}",
+      // loadPath: config.API_ROOT + "/translations/{{lng}}",
     },
   });
 

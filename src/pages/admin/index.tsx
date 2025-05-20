@@ -1,66 +1,54 @@
 import { useState } from "react";
-import { Modal, Card } from "antd";
+import { Card, Modal } from "antd";
 import { useHooks, useGet } from "hooks";
 import { Edit } from "assets/images/icons";
-import Update from "./create";
-import More from "./more";
-import Avatar from "assets/images/27470334_7309681.jpg";
+import Update from "./update";
 
 const User = () => {
-  const { Meta } = Card;
   const { get, t } = useHooks();
-  const [editModal, showEditModal] = useState({ open: false, data: {} });
-  const [moreModal, showMoreModal] = useState({ open: false, data: {} });
+  const { Meta } = Card;
+  const [editModal, showEditModal] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({});
+  const onEdit = (item: object) => {
+    showEditModal(true);
+    setSelectedCard(item);
+  };
   const { data } = useGet({ name: "admins", url: "/admins/me" });
   const info = get(data, "data", {});
-
   return (
     <div className="flex">
       <Modal
-        open={editModal.open}
-        onCancel={() => showEditModal({ open: false, data: {} })}
+        open={editModal}
+        onOk={() => showEditModal(true)}
+        onCancel={() => showEditModal(false)}
         footer={null}
         centered
         title={t("Edit user")}
-        width={500}
+        width={400}
         destroyOnClose
       >
-        <Update {...{ showEditModal, selectedCard: editModal.data }} />
-      </Modal>
-      <Modal
-        open={moreModal.open}
-        onCancel={() => showMoreModal({ open: false, data: {} })}
-        footer={null}
-        centered
-        title={t("More information")}
-        width={600}
-        destroyOnClose
-      >
-        <More {...{ showMoreModal, moreModal }} />
+        <Update {...{ showEditModal, selectedCard }} />
       </Modal>
       <div>
-        <Card onClick={() => showMoreModal({ open: true, data: info })}>
-          <Meta
-            title={
-              <img
-                className="object-cover rounded-[10px] w-[260px] h-[200px] cursor-pointer"
-                src={get(info, "photoUrl.0", Avatar)}
-                alt="User"
-              />
-            }
-          />
-          <div className="btnPanel">
-            <div
-              className="editBtn"
-              onClick={(e) => {
-                e.stopPropagation();
-                showEditModal({ open: true, data: info });
-              }}
-            >
-              <Edit />
+        <div>
+          <Card hoverable style={{ width: 450, marginRight: 15 }}>
+            <Meta
+              className="pb-[60px]"
+              title={
+                <div className="">
+                  <p>
+                    {t("Username")} - {get(info, "username", "")}
+                  </p>
+                </div>
+              }
+            />
+            <div className="btnPanel">
+              <div className="editBtn" onClick={() => onEdit(info)}>
+                <Edit />
+              </div>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </div>
       </div>
     </div>
   );

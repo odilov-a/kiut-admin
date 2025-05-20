@@ -10,16 +10,34 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   {
-    key: "test",
-    label: "Tests",
+    key: "welcome",
+    label: "Home",
     icon: <AppstoreOutlined />,
-    route: "/test",
+    route: "/",
   },
   {
-    key: "themes",
-    label: "Themes",
+    key: "informations",
+    label: "Informations",
     icon: <AppstoreOutlined />,
-    route: "/themes",
+    route: "/informations",
+  },
+  {
+    key: "participants",
+    label: "Participants",
+    icon: <AppstoreOutlined />,
+    route: "/participant",
+  },
+  {
+    key: "publications",
+    label: "Publications",
+    icon: <AppstoreOutlined />,
+    route: "/publications",
+  },
+  {
+    key: "secondments",
+    label: "Secondments",
+    icon: <AppstoreOutlined />,
+    route: "/secondments",
   },
 ];
 

@@ -46,9 +46,6 @@ const ArrayUpload = ({ field, form, label, multiple = false }: FileUploadProps) 
         setFileList(initialFiles);
       }
     }
-    // field.value o'zgarganda fileList ni yangilab qo'yish mumkin,
-    // ammo yangi qo'shilgan fayllarni ham saqlab qolish kerak.
-    // Shuning uchun bu useEffect ni diqqat bilan sozlang.
   }, [field.value]);
 
   const handleCancel = () => setPreviewOpen(false);
@@ -65,10 +62,6 @@ const ArrayUpload = ({ field, form, label, multiple = false }: FileUploadProps) 
   };
 
   const handleChange: UploadProps["onChange"] = ({ fileList: newFileList }) => {
-    // Biz yangi fileList ni mavjud fileList bilan almashtirmaslikka harakat qilamiz,
-    // chunki yangi fayllar qo'shilganda ularni avvalgisiga qo'shish lozim.
-    // Ammo Antd Upload o'z ichida to'g'ri fileList ni boshqaradi,
-    // shuning uchun bu yerda faqat fileList ni yangilab, Formik qiymatini hisoblaymiz.
     setFileList(newFileList);
     const uploadedUrls = newFileList
       .filter(file => file.status === "done" && file.response?.data?.fileUrl)

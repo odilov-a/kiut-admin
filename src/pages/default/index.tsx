@@ -9,9 +9,9 @@ const DefaultPage = () => {
     <div>
       <div className="top-part dark:bg-[#222638] bg-[#F3F4F7] p-[30px] rounded-[24px] h-[65vh]">
         <p className="text-[24px] dark:text-[#f9acec] font-[500] mb-[20px]">
-          Welcome, {get(info, "firstName")} {get(info, "lastName")}
+          Welcome, {get(info, "username")}
         </p>
-        <div className="rounded-[12px] bg-[#fee6fc] dark:bg-[#525459] text-[#222638] dark:text-[#9EA3B5] p-[22px] w-[560px]">
+        <div className="rounded-[12px] bg-[#cee6f2] dark:bg-[#525459] text-[#222638] dark:text-[#9EA3B5] p-[22px] w-[560px]">
           <div className="flex mb-[20px]">
             <Exclamation />
             <p className="text-[18px] font-[500] ml-[20px] mt-[-5px] w-[250px]">
@@ -41,7 +41,7 @@ const DefaultPage = () => {
           <div className="flex justify-between">
             <p className="mb-[10px]">{t("Admin's telegram:")} </p>
             <a
-              className="text-[#f9acec] hover:text-[#0096db]"
+              className="text-[#0096db] hover:text-[#0096db]"
               href="https://t.me/OdilovAkbar"
               target="_blank"
             >

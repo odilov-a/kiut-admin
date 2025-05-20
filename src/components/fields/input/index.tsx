@@ -46,7 +46,7 @@ const MyInput = (props: IProps) => {
   return (
     <div className={rootClassName + " input relative"}>
       {label ? (
-        <p className="text-[#b59eb3] px-[12px] py-[6px] bg-[#fbe6fe] dark:bg-[#454d70] rounded-[6px] inline-block mb-[12px]">
+        <p className="text-[#b59eb3] px-[12px] py-[6px] bg-[#E6ECFE] dark:bg-[#454d70] rounded-[6px] inline-block mb-[12px]">
           {label}
         </p>
       ) : null}
