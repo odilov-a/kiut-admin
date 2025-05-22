@@ -57,11 +57,11 @@ const DotButton = ({ row, editFunction, deleteFunction }: any) => {
         >
           <div className="action-menu__item" onClick={handleEdit}>
             <EditProblem />
-            <p>{t("Tahrirlash")}</p>
+            <p>{t("Edit")}</p>
           </div>
           <div className="action-menu__item" onClick={handleDelete}>
             <Delete />
-            <p>{t("O'chirish")}</p>
+            <p>{t("Delete")}</p>
           </div>
         </div>
       </div>
