@@ -73,7 +73,7 @@ const Secondment = () => {
                       footer={null}
                       centered
                       title={t("More information")}
-                      width={800}
+                      width={1000}
                       destroyOnClose
                     >
                       <More {...{ showMoreModal, moreModal }} />
