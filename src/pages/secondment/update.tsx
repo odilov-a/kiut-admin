@@ -66,12 +66,6 @@ const Update = () => {
             required: true,
             name: "descriptionEn",
             value: get(data, "descriptionEn"),
-          },
-          {
-            type: "array",
-            required: true,
-            name: "photoUrl",
-            value: get(data, "photoUrl", []),
           }
         ]}
         onSuccess={() => {
@@ -124,7 +118,7 @@ const Update = () => {
                       <Field
                         name="descriptionUz"
                         className="h-[40vh]"
-                        component={Fields.Ckeditor}
+                        component={Fields.CkeditorImage}
                         placeholder={t("Description (uz)")}
                       />
                     </div>
@@ -144,7 +138,7 @@ const Update = () => {
                       <Field
                         name="descriptionRu"
                         className="h-[40vh]"
-                        component={Fields.Ckeditor}
+                        component={Fields.CkeditorImage}
                         placeholder={t("Description (ru)")}
                       />
                     </div>
@@ -164,21 +158,8 @@ const Update = () => {
                       <Field
                         name="descriptionEn"
                         className="h-[40vh]"
-                        component={Fields.Ckeditor}
+                        component={Fields.CkeditorImage}
                         placeholder={t("Description (en)")}
-                      />
-                    </div>
-                  </TabPane>
-                  <TabPane tab={t("Photo")} key="photo">
-                    <div className="mb-[10px]">
-                      <p className="text-[#9EA3B5] px-[12px] py-[6px] bg-[#E6ECFE] rounded-[6px] inline-block mb-[12px] mr-[10px]">
-                        {t("Photo")}
-                      </p>
-                      <Field
-                        name="photoUrl"
-                        type="upload"
-                        multiple={true}
-                        component={Fields.ArrayUpload}
                       />
                     </div>
                   </TabPane>

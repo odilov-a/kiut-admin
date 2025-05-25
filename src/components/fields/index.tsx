@@ -11,6 +11,7 @@ import FileUpload3 from "./fileUpload3";
 import Ckeditor from "./Ckeditor";
 import Search from "./Search";
 import ArrayUpload from "./arrayUpload";
+import CkeditorImage from "./CkeditorImage";
 
 export default {
   Input,
@@ -26,4 +27,5 @@ export default {
   Ckeditor,
   Search,
   ArrayUpload,
+  CkeditorImage
 };

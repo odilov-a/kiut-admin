@@ -31,10 +31,8 @@ const ArrayUpload = ({ field, form, label, multiple = false }: FileUploadProps) 
   const [previewTitle, setPreviewTitle] = useState("");
   const [fileList, setFileList] = useState<UploadFile[]>([]);
 
-  // Agar update holatida mavjud initial URL lar bo'lsa, ularni faqat bir marta o'rnating.
   useEffect(() => {
     if (field.value && Array.isArray(field.value) && field.value.length > 0) {
-      // Faqat fileList hali bo'sh bo'lsa, initial qiymatlarni o'rnating.
       if (fileList.length === 0) {
         const initialFiles = field.value.map((url: string, index: number) => ({
           uid: `-initial-${index}`,
@@ -49,7 +47,6 @@ const ArrayUpload = ({ field, form, label, multiple = false }: FileUploadProps) 
   }, [field.value]);
 
   const handleCancel = () => setPreviewOpen(false);
-
   const handlePreview = async (file: UploadFile) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj as File);
